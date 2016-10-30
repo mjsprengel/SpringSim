@@ -1,4 +1,7 @@
-from tkinter import *
+try:
+    from tkinter import *
+except ImportError:
+    from Tkinter import *
 import time
 import math
 
@@ -90,12 +93,12 @@ def calculate_motion():
 def speedtest():
     global r,v,a,x,refresh,dt
     i=0
-    t1 = time.clock()
+    t1 = time.time()
     while True:
         i+=1
         calculate_motion()
         if i%40000 == 0:
-            t2 = time.clock()
+            t2 = time.time()
             iters_per_second = int(40000/(t2-t1))
             refresh = int(iters_per_second/120)
             dt = 1.0/(refresh*10)
